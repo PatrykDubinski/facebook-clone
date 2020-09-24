@@ -48,11 +48,11 @@ const Post = ({ profilePic, image, username, timestamp, message, id }) => {
         .onSnapshot((snapshot) => {
           setComments(
             snapshot.docs.map((com) => {
-              console.log(com.data().timestamp);
+              console.log(com.data());
               return {
                 id: com.id,
                 name: com.data().name,
-                commentLikes: com.data().likes,
+                commentLikes: com.data().commentLikes,
                 comment: com.data().comment,
                 isLiked: com.data().isLiked,
                 timestamp: new Date(
@@ -113,35 +113,6 @@ const Post = ({ profilePic, image, username, timestamp, message, id }) => {
     }
   };
 
-  const likeComment = (e) => {
-    const comId = e.target.closest(".comments__bottom-comment").id;
-    if (!isLikedComment) {
-      setIsLikedComment(true);
-      let likes;
-      commentLikes.map((com) => {
-        if (com.id === comId) {
-          likes = com.likes + 1;
-        }
-      });
-      db.collection("posts").doc(id).collection("comments").doc(comId).update({
-        commentLikes: likes,
-        isLiked: true,
-      });
-    } else {
-      setIsLikedComment(false);
-      let likes;
-      commentLikes.map((com) => {
-        if (com.id === comId) {
-          likes = com.likes - 1;
-        }
-      });
-      db.collection("posts").doc(id).collection("comments").doc(comId).update({
-        commentLikes: likes,
-        isLiked: false,
-      });
-    }
-  };
-
   const toggleComments = (e) => {
     setShowComments(!showComments);
   };
@@ -197,83 +168,47 @@ const Post = ({ profilePic, image, username, timestamp, message, id }) => {
         </div>
       </div>
       {/* Komentarze */}
-      <div className="post__comments">
-        <div className="comments__top">
-          <Avatar />
-          <div className="comments__top-input">
-            <form onSubmit={submitComment}>
-              <input
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                type="text"
-                placeholder="Write your comment..."
-              />
-              <EmojiEmotionsIcon
-                onClick={() => setShowEmojiPicker(!showEmojiPicker)}
-              />
-              {showEmojiPicker ? <Picker onEmojiClick={onEmojiClick} /> : null}
-              <button type="submit"></button>
-            </form>
+      {showComments ? (
+        <div className="post__comments">
+          <div className="comments__top">
+            <Avatar />
+            <div className="comments__top-input">
+              <form onSubmit={submitComment}>
+                <input
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  type="text"
+                  placeholder="Write your comment..."
+                />
+                <EmojiEmotionsIcon
+                  onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+                />
+                {showEmojiPicker ? (
+                  <Picker onEmojiClick={onEmojiClick} />
+                ) : null}
+                <button type="submit"></button>
+              </form>
+            </div>
+          </div>
+          <div className="comments__bottom">
+            {comments.map((com, i) => {
+              console.log(com);
+              return (
+                <Comment
+                  id={id}
+                  key={i}
+                  comment={com.comment}
+                  name={com.name}
+                  comId={com.id}
+                  likes={com.commentLikes}
+                  date={com.timestamp}
+                  isLiked={com.isLiked}
+                />
+              );
+            })}
           </div>
         </div>
-        <div className="comments__bottom">
-          {showComments
-            ? comments.map((com) => {
-                console.log(com);
-                return (
-                  <Comment
-                    id={id}
-                    comment={com.comment}
-                    name={com.name}
-                    comId={com.id}
-                    likes={com.commentLikes}
-                    date={com.timestamp}
-                    isLiked={com.isLiked}
-                  />
-                );
-              })
-            : null}
-          {/* {comments.map((com, i) => {
-              console.log(com);
-              let likes = commentLikes.map((like) => {
-                if (like.id === com.id) {
-                  return like.likes;
-                }
-              });
-              const daysAgo = Math.ceil(
-                (new Date().getTime() - new Date(com.timestamp).getTime()) /
-                  (1000 * 60 * 60 * 24)
-              );
-              return (
-                <div key={i} id={com.id} className="comments__bottom-comment">
-                  <div className="comments__bottom-commentLeft">
-                    <Avatar />
-                  </div>
-                  <div className="comments__bottom-commentRight">
-                    <div className="comment__content">
-                      <h4>{com.name}</h4>
-                      <p>{com.comment}</p>
-                      <span className="smallStats">
-                        <ThumbUpIcon />
-                        {likes}
-                      </span>
-                    </div>
-                    <div className="comments__stats">
-                      <p
-                        className={com.isLiked ? "comment__liked" : null}
-                        onClick={(e) => likeComment(e)}
-                      >
-                        Like
-                      </p>
-                      <p>&middot;</p>
-                      <p>{daysAgo} days ago</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })} */}
-        </div>
-      </div>
+      ) : null}
     </div>
   );
 };

@@ -9,7 +9,7 @@ import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions";
 import db from "../../../firebase";
 import firebase from "firebase";
 
-const Comment = ({ id, name, comment, isLiked, timestamp }) => {
+const Comment = ({ id, name, comment, isLiked, timestamp, comId, likes }) => {
   const [input, setInput] = useState("");
   const [isLikedComment, setIsLikedComment] = useState(false);
 
@@ -26,21 +26,28 @@ const Comment = ({ id, name, comment, isLiked, timestamp }) => {
   };
 
   const likeComment = (e) => {
-    const comId = e.target.closest(".comments__bottom-comment").id;
+    console.log(comId);
     if (!isLikedComment) {
       setIsLikedComment(true);
-      let likes;
-      db.collection("posts").doc(id).collection("comments").doc(comId).update({
-        commentLikes: likes,
-        isLiked: true,
-      });
+      console.log(likes);
+      db.collection("posts")
+        .doc(id)
+        .collection("comments")
+        .doc(comId)
+        .update({
+          commentLikes: likes + 1,
+          isLiked: true,
+        });
     } else {
       setIsLikedComment(false);
-      let likes;
-      db.collection("posts").doc(id).collection("comments").doc(comId).update({
-        commentLikes: likes,
-        isLiked: false,
-      });
+      db.collection("posts")
+        .doc(id)
+        .collection("comments")
+        .doc(comId)
+        .update({
+          commentLikes: likes - 1,
+          isLiked: false,
+        });
     }
   };
 
@@ -55,6 +62,7 @@ const Comment = ({ id, name, comment, isLiked, timestamp }) => {
           <p>{comment}</p>
           <span className="smallStats">
             <ThumbUpIcon />
+            {likes}
           </span>
         </div>
         <div className="comments__stats">

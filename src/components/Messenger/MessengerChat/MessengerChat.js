@@ -78,7 +78,7 @@ const MessengerChat = React.memo(() => {
 
     db.collection("rooms").doc(roomId).collection("messages").add({
       message: input,
-      name: user.displayName,
+      name: "test",
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
 
