@@ -13,16 +13,14 @@
   --dark-bg: #18191a;
 }
 
-.app {
-  background-color: var(--bg);
-  color: var(--primary-text);
-}
-
-.app.dark {
-  background-color: var(--dark-bg);
-  color: var(--dark-primary-text);
-}
-
-.app__body {
+.navItem__item {
+  list-style-type: none;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.app.dark .navItem__item .MuiIconButton-root {
+  color: gray;
 }

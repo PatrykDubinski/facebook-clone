@@ -1,0 +1,120 @@
+:root {
+  --card-background: #ffffff;
+  --comment-bg: #f0f2f5;
+  --primary-text: #050505;
+  --secondary-text: #65676b;
+  --header-bg: #ffffff;
+  --bg: #f0f2f5;
+  --dark-card-background: #242526;
+  --dark-comment-bg: #3a3b3c;
+  --dark-primary-text: #e4e6eb;
+  --dark-header-bg: #242526;
+  --dark-secondary-text: #b0b3b8;
+  --dark-bg: #18191a;
+}
+
+.dropMessenger {
+  position: absolute;
+  top: 68px;
+  width: 450px;
+  transform: translateX(-70%);
+  padding: 1rem;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: var(--header-bg);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  font-size: 1rem;
+  transition: all 500ms ease;
+  padding-left: 10px;
+}
+
+.app.dark .dropMessenger {
+  background-color: var(--dark-header-bg);
+  box-shadow: 0px 5px 10px rgba(78, 78, 78, 0.2);
+}
+
+.dropMessenger__top {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.dropMessenger__top--input-wrapper {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  height: 26px;
+  background-color: var(--bg);
+  padding: 10px;
+  border-radius: 999px;
+}
+
+.app.dark .dropMessenger__top--input-wrapper {
+  background-color: var(--dark-bg);
+}
+
+.dropMessenger__top--input-wrapper > input {
+  flex: 1;
+  display: flex;
+  border: none;
+  outline-width: 0;
+  background-color: transparent;
+  color: var(--secondary-text);
+  margin-left: 10px;
+  font-size: medium;
+}
+
+.app.dark .dropMessenger__top--input-wrapper > input {
+  color: var(--dark-secondary-text);
+}
+
+.dropMessenger__top--input-wrapper > input::placeholder {
+  color: var(--secondary-text);
+  font-size: medium;
+  font-weight: 400;
+}
+
+.app.dark .dropMessenger__top--input-wrapper > input::placeholder {
+  color: var(--dark-secondary-text);
+}
+
+.dropMessenger__top--input-wrapper > .MuiSvgIcon-root {
+  color: gray;
+}
+
+.dropMessenger__messages {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropMessenger__bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2e81f4;
+  position: relative;
+  padding: 15px 0 0 0;
+}
+
+.dropMessenger__bottom > h4:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.menu__closeIcon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: gray;
+}
+
+.dropMessenger__bottom::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 1px;
+  background-color: var(--dark-primary-text);
+}

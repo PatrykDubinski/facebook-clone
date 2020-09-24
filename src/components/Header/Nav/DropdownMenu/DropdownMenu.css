@@ -1,0 +1,255 @@
+:root {
+  --card-background: #ffffff;
+  --comment-bg: #f0f2f5;
+  --primary-text: #050505;
+  --secondary-text: #65676b;
+  --header-bg: #ffffff;
+  --bg: #f0f2f5;
+  --dark-card-background: #242526;
+  --dark-comment-bg: #3a3b3c;
+  --dark-primary-text: #e4e6eb;
+  --dark-header-bg: #242526;
+  --dark-secondary-text: #b0b3b8;
+  --dark-bg: #18191a;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 68px;
+  width: 400px;
+  transform: translateX(-85%);
+  padding: 1rem;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: var(--header-bg);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  font-size: 1rem;
+  transition: all 500ms ease;
+}
+
+.app.dark .dropdownMenu {
+  background-color: var(--dark-header-bg);
+}
+
+.dropdownMenu p,
+.dropdownMenu h2 {
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: bold;
+}
+
+.app.dark .dropdownMenu p,
+.app.dark .dropdownMenu h2 {
+  color: var(--dark-secondary-text);
+}
+
+.dropdownMenu__avatar > p {
+  color: rgba(0, 0, 0, 0.2);
+  font-weight: 400;
+  font-size: 0.7rem;
+}
+
+.avatarItem .MuiAvatar-root {
+  width: 55px;
+  height: 55px;
+}
+
+.avatarItem,
+.feedbackItem {
+  margin-bottom: 10px;
+}
+
+.names {
+  margin-right: auto;
+  margin-left: 20px;
+}
+
+.menu {
+  width: 100%;
+}
+
+.menu-primary-enter {
+  position: absolute;
+  transform: translateX(-110%);
+}
+
+.menu-primary-enter-active {
+  transform: translateX(0%);
+  transition: all 500ms ease;
+}
+
+.goBack {
+  position: relative;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.goBack::before,
+.avatarItem::before,
+.feedbackItem::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.menu-primary-exit {
+  position: absolute;
+}
+
+.menu-primary-exit-active {
+  transform: translateX(-110%);
+  transition: all 500ms ease;
+}
+
+.menu-secondary-enter {
+  transform: translateX(110%);
+}
+
+.menu-secondary-enter-active {
+  transform: translateX(0%);
+  transition: all 500ms ease;
+}
+
+.menu-secondary-exit-active {
+  transform: translateX(110%);
+  transition: all 500ms ease;
+}
+
+.dropdownItem {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  transition: 500ms;
+  padding: 0.5rem;
+}
+
+.dropdownItem > p,
+.dropdownItem > h2 {
+  margin: 0px 20px;
+}
+
+.dropdownItem:hover {
+  background-color: #e4e4e4;
+  cursor: pointer;
+}
+
+.app.dark .dropdownItem:hover {
+  background-color: gray;
+  color: var(--dark-primary-text) !important;
+}
+
+.app.dark .dropdownItem > p {
+  color: var(--dark-primary-text);
+}
+
+.icon-right {
+  margin-left: auto !important;
+}
+
+.dropdownItem .MuiIconButton-label {
+  z-index: 1;
+  color: #fafafa;
+}
+
+.dropdownItem .MuiTouchRipple-root {
+  background-color: #bdbdbd;
+}
+
+.dropdownItem .MuiIconButton-root {
+  padding: 10px;
+}
+
+.avatarItem {
+  position: relative;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  transition: 500ms;
+  padding: 0.5rem;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.avatarItem:hover {
+  background-color: #e4e4e4;
+  cursor: pointer;
+}
+
+.app.dark .avatarItem:hover {
+  background-color: gray;
+}
+
+.feedbackItem {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  position: relative;
+}
+
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.menu__closeIcon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: gray;
+  z-index: 2;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: 0.4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: #2e81f4;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

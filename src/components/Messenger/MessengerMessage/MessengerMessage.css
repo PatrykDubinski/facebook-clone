@@ -1,0 +1,44 @@
+:root {
+  --card-background: #ffffff;
+  --comment-bg: #f0f2f5;
+  --primary-text: #050505;
+  --secondary-text: #65676b;
+  --header-bg: #ffffff;
+  --bg: #f0f2f5;
+  --dark-card-background: #242526;
+  --dark-comment-bg: #3a3b3c;
+  --dark-primary-text: #e4e6eb;
+  --dark-header-bg: #242526;
+  --dark-secondary-text: #b0b3b8;
+  --dark-bg: #18191a;
+}
+
+.messengerMessage {
+  padding: 10px 0 10px 5px;
+  border-top: 1px solid rgba(101, 103, 107, 0.3);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.messengerMessage:nth-of-type(1) {
+  margin-top: 15px;
+}
+
+.messengerMessage:hover {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.app.dark .messengerMessage:hover {
+  background-color: gray;
+}
+
+.messengerMessage__info {
+  margin-left: 15px;
+}
+
+.messengerMessage > .MuiAvatar-root {
+  width: 55px;
+  height: 55px;
+}

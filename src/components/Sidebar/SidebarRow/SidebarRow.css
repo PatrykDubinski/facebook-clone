@@ -13,16 +13,29 @@
   --dark-bg: #18191a;
 }
 
-.app {
-  background-color: var(--bg);
+.sidebarRow {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebarRow:hover {
+  background-color: lightgray;
+  border-radius: 10px;
+}
+
+.app.dark .sidebarRow:hover {
+  background-color: gray;
   color: var(--primary-text);
 }
 
-.app.dark {
-  background-color: var(--dark-bg);
-  color: var(--dark-primary-text);
+.sidebarRow > h4 {
+  margin-left: 20px;
+  font-weight: 600;
 }
 
-.app__body {
-  display: flex;
+.sidebarRow > .MuiSvgIcon-root {
+  font-size: xx-large;
+  color: #2e81f4;
 }

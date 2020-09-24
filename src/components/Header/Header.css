@@ -1,0 +1,117 @@
+:root {
+  --card-background: #ffffff;
+  --comment-bg: #f0f2f5;
+  --primary-text: #050505;
+  --secondary-text: #65676b;
+  --header-bg: #ffffff;
+  --bg: #f0f2f5;
+  --dark-card-background: #242526;
+  --dark-comment-bg: #3a3b3c;
+  --dark-primary-text: #e4e6eb;
+  --dark-header-bg: #242526;
+  --dark-secondary-text: #b0b3b8;
+  --dark-bg: #18191a;
+}
+
+.header {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  background-color: var(--header-bg);
+  z-index: 100;
+  top: 0;
+  box-shadow: 0px 5px 8px -9px rgba(0, 0, 0, 0.75);
+}
+
+.app.dark .header {
+  background-color: var(--dark-header-bg);
+}
+
+.header__left {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.header__left > img {
+  height: 40px;
+}
+
+.header__input {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg);
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 999px;
+}
+
+.app.dark .header__input {
+  background-color: var(--dark-comment-bg);
+  color: var(--dark-secondary-text);
+}
+
+.app.dark .header__input input::placeholder,
+.app.dark .header__input input {
+  color: var(--dark-secondary-text);
+}
+
+.header__input > input {
+  border: none;
+  background-color: transparent;
+  outline-width: 0;
+}
+
+.header__center {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.header__option {
+  padding: 0 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.header__option:hover {
+  background-color: #eff2f5;
+  border-radius: 10px;
+  align-items: center;
+  padding: 0 30px;
+  border-bottom: none;
+}
+
+.app.dark .header__option:hover {
+  background-color: var(--secondary-text);
+}
+
+.header__option--active > .MuiSvgIcon-root {
+  color: #2e81f4;
+}
+
+.header__option--active {
+  border-bottom: 4px solid #2e81f4;
+}
+
+.header__option > .MuiSvgIcon-root {
+  color: gray;
+}
+
+.header__option:hover > .MuiSvgIcon-root {
+  color: #2e81f4;
+}
+
+.header__info {
+  display: flex;
+  align-items: center;
+}
+
+.header__info > h4 {
+  margin-left: 10px;
+}
+
+.header__right {
+  display: flex;
+}

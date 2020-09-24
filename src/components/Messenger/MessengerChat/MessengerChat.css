@@ -1,0 +1,149 @@
+:root {
+  --card-background: #ffffff;
+  --comment-bg: #f0f2f5;
+  --primary-text: #050505;
+  --secondary-text: #65676b;
+  --header-bg: #ffffff;
+  --bg: #f0f2f5;
+  --dark-card-background: #242526;
+  --dark-comment-bg: #3a3b3c;
+  --dark-primary-text: #e4e6eb;
+  --dark-header-bg: #242526;
+  --dark-secondary-text: #b0b3b8;
+  --dark-bg: #18191a;
+}
+
+.messengerChat {
+  position: fixed;
+  bottom: 0;
+  right: 5%;
+  height: 400px;
+  width: 350px;
+  transition: all 800ms ease;
+}
+
+.messengerChat__top {
+  background-color: var(--card-background);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.messengerChat__top-left {
+  display: flex;
+  align-items: center;
+}
+
+.messengerChat__top-left > h3 {
+  margin-left: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.messengerChat__top-right > .MuiSvgIcon-root {
+  margin: 0 5px;
+  color: var(--dark-secondary-text);
+  cursor: pointer;
+}
+
+.app.dark .messengerChat__top {
+  background-color: var(--dark-card-background);
+}
+
+.messengerChat__messages {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  max-height: 300px;
+  height: 300px;
+  background-color: var(--card-background);
+  overflow-y: scroll;
+}
+
+.app.dark .messengerChat__messages {
+  background-color: var(--dark-card-background);
+  border-top: 1px solid var(--dark-secondary-text);
+}
+
+.messengerChat__messages-message {
+  margin: 5px 10px;
+  padding: 5px 10px;
+  width: fit-content;
+  height: 26px;
+  border-radius: 999px;
+  background-color: var(--comment-bg);
+  color: var(--primary-text);
+}
+
+.app.dark .messengerChat__messages-message {
+  background-color: var(--dark-comment-bg);
+  color: var(--dark-primary-text);
+}
+
+.messengerChat__bottom {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  background-color: var(--card-background);
+}
+
+.app.dark .messengerChat__bottom {
+  background-color: var(--dark-card-background);
+}
+
+.messengerChat__bottom-inputWrapper {
+  flex: 1;
+  border-radius: 999px;
+  background-color: var(--bg);
+  margin: 0 10px;
+  position: relative;
+}
+
+.app.dark .messengerChat__bottom-inputWrapper {
+  background-color: var(--dark-bg);
+}
+
+.messengerChat__bottom-inputWrapper button {
+  display: none;
+}
+
+.messengerChat__bottom-inputWrapper input {
+  color: var(--primary-text);
+  outline-width: 0;
+  background: transparent;
+  border: none;
+  padding: 13px 10px;
+  font-size: medium;
+}
+
+.app.dark .messengerChat__bottom-inputWrapper > input {
+  color: var(--dark-primary-text);
+}
+
+.messengerChat__bottom-inputWrapper > input::placeholder {
+  font-size: medium;
+}
+
+.messengerChat__bottom-inputWrapper > .MuiSvgIcon-root {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  font-size: 2rem;
+  color: #2e81f4;
+}
+
+.messengerChat__bottom-inputWrapper aside.emoji-picker-react {
+  position: absolute;
+  bottom: 50px;
+  right: -70px;
+}
+
+.chat__reciever {
+  margin-left: auto;
+  background-color: #2e81f4;
+  color: var(--dark-primary-text);
+}
