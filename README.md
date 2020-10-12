@@ -1,4 +1,8 @@
 This is my main project, which I'm still working on. It's Facebook App Clone with a lot of Facebooks functionalites for example Messenger, adding posts liking them, commenting. There is also Google Authentication.
+
+Live: [https://facebook-cf17a.web.app/](https://facebook-cf17a.web.app/)<br />
+Google Auth is switched off for now so there is only 1 global user in app.
+
 Things that will be done:
 - Sign up, and Sign in with Email
 - Search Component in Messenger
