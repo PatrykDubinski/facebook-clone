@@ -8,7 +8,6 @@ import Loading from "../UI/Loading/Loading";
 
 const DropMessenger = React.memo(() => {
   const [messages, setMessages] = useState([]);
-  const [lastMessage, setLastMessage] = useState([]);
 
   useEffect(() => {
     db.collection("rooms")

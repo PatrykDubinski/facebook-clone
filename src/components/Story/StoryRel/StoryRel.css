@@ -1,3 +1,10 @@
-.storyRel{
-    display: flex;
+.storyRel {
+  display: flex;
+}
+
+@media (max-width: 1000px) {
+  .storyRel {
+    margin-top: 20px;
+    justify-content: center;
+  }
 }

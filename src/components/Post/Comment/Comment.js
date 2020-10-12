@@ -1,29 +1,13 @@
 import { Avatar } from "@material-ui/core";
-import Picker from "emoji-picker-react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Comment.css";
 
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
-import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions";
 
 import db from "../../../firebase";
-import firebase from "firebase";
 
 const Comment = ({ id, name, comment, isLiked, timestamp, comId, likes }) => {
-  const [input, setInput] = useState("");
   const [isLikedComment, setIsLikedComment] = useState(false);
-
-  const submitComment = (e) => {
-    e.preventDefault();
-    db.collection("posts").doc(id).collection("comments").add({
-      comment: input,
-      commentLikes: 0,
-      isLiked: false,
-      name: "tempName line 96",
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    });
-    setInput("");
-  };
 
   const likeComment = (e) => {
     console.log(comId);

@@ -10,16 +10,24 @@ import AddIcon from "@material-ui/icons/Add";
 import ForumIcon from "@material-ui/icons/Forum";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import SettingsIcon from "@material-ui/icons/Settings";
 
 import "./Header.css";
-import { Avatar, IconButton } from "@material-ui/core";
+import { Avatar } from "@material-ui/core";
 import { useStateValue } from "../store/StateProvider";
 import NavItem from "./Nav/NavItem";
 import DropdownMenu from "./Nav/DropdownMenu/DropdownMenu";
 import DropMessenger from "../Messenger/DropMessenger";
+import { useState } from "react";
 
 const Header = () => {
   const [{ user }, dispatch] = useStateValue();
+
+  const [menu, setMenu] = useState(false);
+
+  const menuHandler = () => {
+    setMenu(!menu);
+  };
 
   return (
     <div className="header">
@@ -32,6 +40,14 @@ const Header = () => {
           <SearchIcon />
           <input type="text" placeholder="Search Facebook" />
         </div>
+      </div>
+      <div
+        className={`menu__toggler ${menu ? "open" : null}`}
+        onClick={menuHandler}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
       <div className="header__center">
         <div className="header__option header__option--active">
@@ -63,6 +79,16 @@ const Header = () => {
         <NavItem icon={<ExpandMoreIcon />}>
           <DropdownMenu />
         </NavItem>
+      </div>
+      <div className={`header__rightSmall ${menu ? "active" : null}`}>
+        <div className="header__info">
+          <Avatar src={user.photoURL} />
+          <h4>{user.displayName}</h4>
+        </div>
+        <NavItem icon={<AddIcon />} />
+        <NavItem icon={<ForumIcon />} />
+        <NavItem icon={<NotificationsActiveIcon />} />
+        <NavItem icon={<SettingsIcon />}>Settings</NavItem>
       </div>
     </div>
   );

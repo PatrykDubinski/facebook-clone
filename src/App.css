@@ -24,5 +24,6 @@
 }
 
 .app__body {
+  position: relative;
   display: flex;
 }

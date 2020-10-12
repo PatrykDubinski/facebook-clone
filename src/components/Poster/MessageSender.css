@@ -92,3 +92,27 @@
   background-color: gray;
   color: var(--dark-secondary-text);
 }
+
+@media (max-width: 1000px) {
+  .messageSender {
+    width: 100%;
+  }
+
+  .messageSender__top {
+    width: unset;
+  }
+
+  .messageSender__top > form {
+    flex: unset;
+    width: 100%;
+  }
+
+  .messageSender__top > form > input {
+    width: 40%;
+    padding: 5px 10px;
+  }
+
+  .messageSender__option {
+    padding: 0;
+  }
+}

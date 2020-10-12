@@ -20,9 +20,9 @@ const MessageSender = () => {
     db.collection("posts").add({
       message: input,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      profilePic: user.photoURL,
-      username: user.displayName,
+      username: "testUser",
       image: imageUrl,
+      likes: 0,
     });
     // database stuff
 

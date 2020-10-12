@@ -4,7 +4,6 @@ import "./App.css";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Header from "./components/Header/Header";
 import Feed from "./components/Feed/Feed";
-import Widgets from "./components/Widgets/Widgets";
 import Login from "./components/Login/Login";
 import { useStateValue } from "./components/store/StateProvider";
 import MessengerChat from "./components/Messenger/MessengerChat/MessengerChat";

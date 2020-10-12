@@ -17,13 +17,11 @@ import Comment from "./Comment/Comment";
 const Post = ({ profilePic, image, username, timestamp, message, id }) => {
   const [likes, setLikes] = useState(null);
   const [isLiked, setIsLiked] = useState(false);
-  const [isLikedComment, setIsLikedComment] = useState(false);
   const [showComments, setShowComments] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [chosenEmoji, setChosenEmoji] = useState(null);
   const [input, setInput] = useState("");
   const [comments, setComments] = useState([]);
-  const [commentLikes, setCommentLikes] = useState(null);
 
   useEffect(() => {
     if (id) {
@@ -37,7 +35,7 @@ const Post = ({ profilePic, image, username, timestamp, message, id }) => {
     if (chosenEmoji) {
       setInput(input + chosenEmoji.emoji);
     }
-  }, [chosenEmoji]);
+  }, [chosenEmoji, input]);
 
   useEffect(() => {
     if (showComments) {
@@ -48,7 +46,6 @@ const Post = ({ profilePic, image, username, timestamp, message, id }) => {
         .onSnapshot((snapshot) => {
           setComments(
             snapshot.docs.map((com) => {
-              console.log(com.data());
               return {
                 id: com.id,
                 name: com.data().name,
@@ -63,21 +60,7 @@ const Post = ({ profilePic, image, username, timestamp, message, id }) => {
           );
         });
     }
-  }, [showComments]);
-
-  useEffect(() => {
-    db.collection("posts")
-      .doc(id)
-      .collection("comments")
-      .onSnapshot((snapshot) =>
-        setCommentLikes(
-          snapshot.docs.map((doc) => ({
-            id: doc.id,
-            likes: doc.data().commentLikes,
-          }))
-        )
-      );
-  }, [id]);
+  }, [showComments, id]);
 
   const onEmojiClick = (event, emojiObject) => {
     setChosenEmoji(emojiObject);
@@ -131,7 +114,7 @@ const Post = ({ profilePic, image, username, timestamp, message, id }) => {
       </div>
       {image ? (
         <div className="post__image">
-          <img src={image} alt="Users Photo" />
+          <img src={image} alt="Users post" />
         </div>
       ) : null}
       <div

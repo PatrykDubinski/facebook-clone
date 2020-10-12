@@ -45,7 +45,7 @@ const MessengerChat = React.memo(() => {
     if (chosenEmoji) {
       setInput(input + chosenEmoji.emoji);
     }
-  }, [chosenEmoji]);
+  }, [chosenEmoji, input]);
 
   useEffect(() => {
     const messageWindow = document.querySelector(".messengerChat__messages");

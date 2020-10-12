@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Sidebar.css";
 
 import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
@@ -14,20 +14,31 @@ import { useStateValue } from "../store/StateProvider";
 const Sidebar = () => {
   const [{ user }, dispatch] = useStateValue();
 
+  const [openSidebar, setOpenSidebar] = useState(false);
+
+  const openSidebarHandler = () => {
+    setOpenSidebar(!openSidebar);
+  };
+
   return (
-    <div className="sidebar">
-      <SidebarRow src={user.photoURL} title={user.displayName} />
-      <SidebarRow
-        Icon={LocalHospitalIcon}
-        title="COVID-19 Information Center"
-      />
-      <SidebarRow Icon={EmojiFlagsIcon} title="Pages" />
-      <SidebarRow Icon={PeopleIcon} title="Friends" />
-      <SidebarRow Icon={ChatIcon} title="Messenger" />
-      <SidebarRow Icon={StorefrontIcon} title="Marketplace" />
-      <SidebarRow Icon={VideoLibraryIcon} title="Videos" />
-      <SidebarRow Icon={ExpandMoreOutlinedIcon} title="Marketplace" />
-    </div>
+    <>
+      <div onClick={openSidebarHandler} className="sidebarOpener">
+        <p>{openSidebar ? "Close" : "Open"} Sidebar</p>
+      </div>
+      <div className={`sidebar ${openSidebar ? "open" : null}`}>
+        <SidebarRow src={user.photoURL} title={user.displayName} />
+        <SidebarRow
+          Icon={LocalHospitalIcon}
+          title="COVID-19 Information Center"
+        />
+        <SidebarRow Icon={EmojiFlagsIcon} title="Pages" />
+        <SidebarRow Icon={PeopleIcon} title="Friends" />
+        <SidebarRow Icon={ChatIcon} title="Messenger" />
+        <SidebarRow Icon={StorefrontIcon} title="Marketplace" />
+        <SidebarRow Icon={VideoLibraryIcon} title="Videos" />
+        <SidebarRow Icon={ExpandMoreOutlinedIcon} title="Marketplace" />
+      </div>
+    </>
   );
 };
 
